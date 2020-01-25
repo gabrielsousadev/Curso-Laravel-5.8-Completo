@@ -65,3 +65,10 @@ Route::get('/produtos', function()
     echo "<ol>";
  
 })->name('meusprodutos');
+
+//Route::redirect('todosprodutos1', 'produtos', 301);
+
+Route::get('todosprodutos2', function ()
+{
+    return redirect()->route('meusprodutos');
+});
