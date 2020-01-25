@@ -11,6 +11,8 @@
 |
 */
 
+use Facade\FlareClient\View;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -34,3 +36,21 @@ Route::get('/rotacomregras/{nome}/{n}', function($nome, $n)
     }
 })  ->where('nome','[A-Za-z]+')
     ->where('n','[0-9]+');
+
+Route::prefix('/app')->group(function()
+{
+    Route::get('/app', function()
+    {   
+        return View('app');
+    });
+
+    Route::get('/user', function()
+    {   
+        return View('user');
+    });
+
+    Route::get('/profile', function()
+    {   
+        return View('profile');
+    });
+});
