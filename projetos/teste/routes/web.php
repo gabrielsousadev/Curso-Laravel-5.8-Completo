@@ -19,3 +19,10 @@ Route::get('/ola/{nome}/{sobrenome}', function($nome, $sobrenome)
 {
     echo "ola, bem vindo, $nome $sobrenome";
 });
+
+Route::get('/seunome/{nome?}', function($nome=null)
+{   
+    if(isset($nome))
+        return "ola, bem vindo, $nome";
+        return "Voce nao digitou nenhum nome";  
+});
