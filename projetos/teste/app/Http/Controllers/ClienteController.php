@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 class ClienteController extends Controller
 {
 
-    private $clientes = {
-        ['nome' => 'Gabriel'],
-        ['nome' => 'qwe'],
-        ['nome' => 'asd'],
-        ['nome' => 'zxc']
-    };
+    private $clientes = [
+        ['id'=>1, 'nome' => 'Gabriel'],
+        ['id'=>2, 'nome' => 'qwe'],
+        ['id'=>3, 'nome' => 'asd'],
+        ['id'=>4, 'nome' => 'zxc']
+    ];
 
     /**
      * Display a listing of the resource.
@@ -20,8 +20,9 @@ class ClienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        $clientes = $this->clientes;
+        return view('clientes.index', compact(['clientes']));
     }
 
     /**
