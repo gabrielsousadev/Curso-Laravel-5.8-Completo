@@ -18,7 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('produtos', 'MeuControlador@produtos');
-Route::get('nome', 'MeuControlador@getNome');
-Route::get('idade', 'MeuControlador@getIdade');
-Route::get('multiplicar/{n1}/{n2}', 'MeuControlador@multiplicar');
+Route::get('produtos', 'ClienteController@produtos');
+Route::get('nome', 'ClienteController@getNome');
+Route::get('idade', 'ClienteController@getIdade');
+Route::get('multiplicar/{n1}/{n2}', 'ClienteController@multiplicar');
+
+Route::resource('clientes', 'ClienteController');

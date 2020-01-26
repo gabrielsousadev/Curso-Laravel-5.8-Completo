@@ -6,6 +6,14 @@ use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
+
+    private $clientes = {
+        ['nome' => 'Gabriel'],
+        ['nome' => 'qwe'],
+        ['nome' => 'asd'],
+        ['nome' => 'zxc']
+    };
+
     /**
      * Display a listing of the resource.
      *
