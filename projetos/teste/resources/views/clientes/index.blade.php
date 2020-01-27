@@ -1,4 +1,5 @@
 @extends('layouts.principal')
+@section('titulo', "Clientes")
 @section('conteudo')
 
 <h3>{{$titulo}}</h3>
