@@ -81,9 +81,11 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id) //Vai abrir um formulario contendo os dados do cliente que selecionamos para editar
     {
-        //
+        $clientes = session('clientes');
+        $cliente = $clientes[$id - 1];
+        return View('clientes.edit', compact(['cliente']));
     }
 
     /**
@@ -93,9 +95,12 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id) //Efetivar todas as alterações feitas atraves do formulario na sessao ou BD
     {
-        //
+        $clientes = session('clientes');
+        $cliente = $clientes[$id - 1] ['nome'] = $request->nome;
+        session(['clientes' => $clientes]);
+        return redirect()->route('clientes.index');
     }
 
     /**
