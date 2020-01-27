@@ -28,5 +28,9 @@ Route::get('departamentos', function() {
 Route::get('nome', 'ClienteController@getNome');
 Route::get('idade', 'ClienteController@getIdade');
 Route::get('multiplicar/{n1}/{n2}', 'ClienteController@multiplicar');
+Route::get('opcoes/{opcao?}', function($opcao=null){
+    return view('outras.opcoes', compact(['opcao']));
+})->name('opcoes');
+
 
 Route::resource('clientes', 'ClienteController');
