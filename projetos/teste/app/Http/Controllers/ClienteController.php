@@ -53,7 +53,7 @@ class ClienteController extends Controller
     public function store(Request $request)
     {   
         $clientes = session('clientes');
-        $id = count($clientes) + 1;
+        $id = end($clientes)['id'] + 1;
         $nome = $request->nome;
         $dados = ["id"=>$id, "nome"=>$nome];
         $clientes[] = $dados;
@@ -71,7 +71,8 @@ class ClienteController extends Controller
     public function show($id)
     {
         $clientes = session('clientes');
-        $cliente = $clientes[$id - 1];
+        $index = $this->getIndex($id, $clientes);
+        $cliente = $clientes[$index];
         return View('clientes.info', compact(['cliente']));
     }
 
@@ -84,7 +85,8 @@ class ClienteController extends Controller
     public function edit($id) //Vai abrir um formulario contendo os dados do cliente que selecionamos para editar
     {
         $clientes = session('clientes');
-        $cliente = $clientes[$id - 1];
+        $index = $this->getIndex($id, $clientes);
+        $cliente = $clientes[$index];
         return View('clientes.edit', compact(['cliente']));
     }
 
@@ -98,7 +100,8 @@ class ClienteController extends Controller
     public function update(Request $request, $id) //Efetivar todas as alterações feitas atraves do formulario na sessao ou BD
     {
         $clientes = session('clientes');
-        $cliente = $clientes[$id - 1] ['nome'] = $request->nome;
+        $index = $this->getIndex($id, $clientes);
+        $clientes[$index] ['nome'] = $request->nome;
         session(['clientes' => $clientes]);
         return redirect()->route('clientes.index');
     }
@@ -112,10 +115,16 @@ class ClienteController extends Controller
     public function destroy($id) //Apaga as informações de acordo com seu id
     {
         $clientes = session('clientes');
-        $ids = array_column($clientes, 'id');
-        $index = array_search($id, $ids);
+        $index = $this->getIndex($id, $clientes);
         array_splice($clientes, $index, 1);
         session(['clientes' => $clientes]);
         return redirect() -> route('clientes.index');
+    }
+
+    private function getIndex($id, $clientes)
+    {
+        $ids = array_column($clientes, 'id');
+        $index = array_search($id, $ids);
+        return $index;
     }
 }
