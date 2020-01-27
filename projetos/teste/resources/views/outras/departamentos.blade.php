@@ -8,4 +8,6 @@
     <li>Acessorios</li>
     <li>Roupas</li>
 </ul>
+@component('components.alerta')
+@endcomponent
 @endsection
