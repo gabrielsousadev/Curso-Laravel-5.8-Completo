@@ -109,8 +109,13 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id) //Apaga as informações de acordo com seu id
     {
-        //
+        $clientes = session('clientes');
+        $ids = array_column($clientes, 'id');
+        $index = array_search($id, $ids);
+        array_splice($clientes, $index, 1);
+        session(['clientes' => $clientes]);
+        return redirect() -> route('clientes.index');
     }
 }
