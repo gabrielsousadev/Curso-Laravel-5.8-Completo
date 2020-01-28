@@ -6,6 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <meta name="csrf-token" content="{{csrf_token()}}">
+    <style>
+        body 
+        {
+            padding: 20px;
+        }
+    </style>
     <title>Cadastro de Produtos</title>
 </head>
 <body>
