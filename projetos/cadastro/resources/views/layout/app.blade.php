@@ -11,11 +11,18 @@
         {
             padding: 20px;
         }
+
+        .navbar
+        {
+            margin-bottom: 20px;
+        }
     </style>
     <title>Cadastro de Produtos</title>
 </head>
 <body>
     <div class="container">
+        @component('component_navbar')
+        @endcomponent
         <main role="main">
             @hasSection ('body')
                 @yield('body')
