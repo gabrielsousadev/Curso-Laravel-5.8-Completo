@@ -11,14 +11,14 @@
 |
 */
 
+use Facade\FlareClient\View;
+use Illuminate\Http\Request;
+
+
 Route::get('/', function () {
     return view('index');
 });
 
-Auth::routes();
+Route::get('/produtos', 'ControladorProduto@index');
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/categorias', 'ControladorCategoria@index');
