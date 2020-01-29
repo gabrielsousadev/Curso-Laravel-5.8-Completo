@@ -13,8 +13,9 @@ class ControladorCategoria extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('categorias');
+    {   
+        $cats = Categoria::all();
+        return view('categorias', compact('cats'));
     }
 
     /**
@@ -35,9 +36,10 @@ class ControladorCategoria extends Controller
      */
     public function store(Request $request)
     {
-        $cat = new Categoria();
-        $cat->nome = $request->input('nomeCategoria');
-        $cat->save();
+        $categorias = new Categoria();
+        $categorias->nome = $request->input('nomeCategoria');
+        $categorias->save();
+        return redirect('/categorias');
     }
 
     /**
