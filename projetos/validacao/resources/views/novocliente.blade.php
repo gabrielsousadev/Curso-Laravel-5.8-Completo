@@ -36,6 +36,10 @@
                                 <input type="number" id="id_idade" class="form-control" name="idade" placeholder="Idade do cliente">
                             </div>
                             <div class="form-group">
+                                <label for="nome">Endereço do Cliente</label>
+                                <input type="text" id="id_idade" class="form-control" name="endereco" placeholder="Endereço do cliente">
+                            </div>
+                            <div class="form-group">
                                 <label for="nome">Email do Cliente</label>
                                 <input type="text" id="id_email" class="form-control" name="email" placeholder="E-mail do cliente">
                             </div>
