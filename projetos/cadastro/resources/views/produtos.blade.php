@@ -21,7 +21,7 @@
         </table>
     </div>
     <div class="card-footer">
-        <button class="btn btn-sm btn-primary" role="button" onclick="novoProduto()">Novo Produto</a>
+        <button class="btn btn-sm btn-primary" role="button" onclick="produtoNovo()">Novo Produto</a>
     </div>
 </div>
 
@@ -84,13 +84,13 @@
             }
         });
 
-        function novoProduto()
+        function produtoNovo()
         {   
             $('#id').val('');
             $('#nomeProduto').val('');
             $('#precoProduto').val('');
             $('#quantidadeProduto').val('');
-            $('#id_dialogProdutos').modal('show')
+            $('#id_dialogProdutos').modal('show');
         }
 
         function carregarCategorias()
@@ -141,14 +141,16 @@
 
             $.post("/api/produtos", novoProduto, function(data) 
             {
-                console.log(data);
+                produto = JSON.parse(data);
+                linha = montarLinha(produto);
+                $('#tabelaProdutos>tbody').append(linha);
             });
         }
 
         $("#id_formProduto").submit(function(event){
             event.preventDefault();
             criarProduto();
-            $("#id_dialogProdutos").modal('hide'); //103
+            $("#id_dialogProdutos").modal('hide');
         });
 
         $(function(){
