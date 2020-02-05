@@ -113,10 +113,39 @@
             "<td>" + produto.estoque + "</td>" +
             "<td>" + produto.preco + "</td>" +
             "<td>" + produto.categoria_id + "</td>" +
-            "<td>" + '<button class="btn btn-sm btn-primary"> Editar </button>' + '<button class="btn btn-sm btn-danger"> Apagar </button>' + "</td>" +
+            "<td>" + '<button class="btn btn-sm btn-primary" onclick="editar('+ produto.id +')"> Editar </button> ' +
+            '<button class="btn btn-sm btn-danger" onclick="remover('+ produto.id +')"> Apagar </button> ' +
+            "</td>" +
             "</tr>";
 
             return linha;
+        }
+
+        function remover(id)
+        {
+            $.ajax({
+                type: "DELETE",
+                url: "/api/produtos/" + id,
+                context: this,
+                success: function()
+                {
+                    console.log('APAGOU OK');
+                    linhas = $("#tabelaProdutos>tbody>tr");
+                    e = linhas.filter(function(i, elemento)
+                    {
+                        return elemento.cells[0].textContent == id;
+                    });
+
+                    if(e)
+                    {
+                        e.remove();
+                    }
+                },
+                error: function(error)
+                {
+                    console.log(error);
+                }
+            });
         }
 
         function carregarProdutos()
