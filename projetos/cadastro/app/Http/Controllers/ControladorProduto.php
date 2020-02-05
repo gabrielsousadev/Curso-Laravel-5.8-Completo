@@ -50,7 +50,6 @@ class ControladorProduto extends Controller
         $novoProduto->categoria_id = $request->input('categoria_id');
         $novoProduto->save();
         return json_encode($novoProduto);
-        //SQSQS
     }
 
     /**

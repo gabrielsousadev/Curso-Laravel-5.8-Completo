@@ -145,11 +145,10 @@
             });
         }
 
-
         $("#id_formProduto").submit(function(event){
             event.preventDefault();
             criarProduto();
-            $("#id_dialogProdutos").modal('hide');
+            $("#id_dialogProdutos").modal('hide'); //103
         });
 
         $(function(){
