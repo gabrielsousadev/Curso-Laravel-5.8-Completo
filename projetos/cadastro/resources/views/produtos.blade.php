@@ -21,7 +21,7 @@
         </table>
     </div>
     <div class="card-footer">
-        <button class="btn btn-sm btn-primary" role="button">Novo Produto</a>
+        <button class="btn btn-sm btn-primary" role="button" onclick="novoProduto()">Novo Produto</a>
     </div>
 </div>
 
@@ -72,5 +72,17 @@
     </div>
 </div>
 
+@endsection
 
+@section('javascript')
+    <script type="text/javascript">
+        function novoProduto()
+        {   
+            $('#id').val('');
+            $('#nomeProduto').val('');
+            $('#precoProduto').val('');
+            $('#quantidadeProduto').val('');
+            $('#id_dialogProdutos').modal('show')
+        }
+    </script>
 @endsection
