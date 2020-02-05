@@ -43,7 +43,13 @@ class ControladorProduto extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $novoProduto = new Produto();
+        $novoProduto->nome = $request->input('nome');
+        $novoProduto->preco = $request->input('preco');
+        $novoProduto->estoque = $request->input('estoque');
+        $novoProduto->categoria_id = $request->input('categoria_id');
+        $novoProduto->save();
+        return json_encode($novoProduto);
     }
 
     /**
