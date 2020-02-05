@@ -203,11 +203,23 @@
             $.ajax({
                 type: "PUT",
                 url: "/api/produtos/" + novoProduto.id,
-                data: novoProduto,
                 context: this,
-                success: function()
-                {
-                    console.log('SALVOU OK');
+                data: novoProduto,
+                success: function(data)
+                {   
+                    novoProduto = JSON.parse(data);
+                    linhas = $("#tabelaProdutos>tbody>tr");
+                    e = linhas.filter(function(i, e) {
+                        return(e.cells[0].textContent == novoProduto.id);
+                    });
+
+                    if(e) {
+                        e[0].cells[0].textContent == novoProduto.id;
+                        e[0].cells[1].textContent == novoProduto.nome;
+                        e[0].cells[2].textContent == novoProduto.estoque;
+                        e[0].cells[3].textContent == novoProduto.preco;
+                        e[0].cells[4].textContent == novoProduto.categoria_id;
+                    }
                 },
                 error: function(error)
                 {
@@ -222,7 +234,7 @@
                 salvarProduto();
             else
                 criarProduto();
-            $("#id_dialogProdutos").modal('hide');
+                $("#id_dialogProdutos").modal('hide');
         });
 
         $(function(){
