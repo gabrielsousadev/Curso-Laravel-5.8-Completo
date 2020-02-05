@@ -4,7 +4,7 @@
         <div class="card-body">
             <h5 class="card-title">Cadastro de Categorias</h5>
             @if (count($cats) > 0)
-            <table class="batle table-ordered table-hover">
+            <table class="table table-ordered table-hover">
                 <thead>
                     <tr>
                         <th>Código</th>
@@ -17,8 +17,9 @@
                         <tr>
                         <td>{{$cat->id}}</td>
                             <td>{{$cat->nome}}</td>
-                        <td><a href="/categorias/editar/{{$cat->id}}" class="btn btn-sm btn-primary">Editar</a></td>
-                        <td><a href="/categorias/apagar/{{$cat->id}}" class="btn btn-sm btn-danger">Apagar</a></td>
+                        <td><a href="/categorias/editar/{{$cat->id}}" class="btn btn-sm btn-primary">Editar</a>
+                            <a href="/categorias/apagar/{{$cat->id}}" class="btn btn-sm btn-danger">Apagar</a></td>
+
                         </tr>
                     @endforeach
                 </tbody>

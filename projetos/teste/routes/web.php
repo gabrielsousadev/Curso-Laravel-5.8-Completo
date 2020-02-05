@@ -11,9 +11,6 @@
 |
 */
 
-use Facade\FlareClient\View;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
 
 
 Route::get('/', function () {
