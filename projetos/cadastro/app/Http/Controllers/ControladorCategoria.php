@@ -106,8 +106,6 @@ class ControladorCategoria extends Controller
         return redirect('/categorias');
     }
 
-
-    
     public function indexJson()
     {   
         $cats = Categoria::all();
