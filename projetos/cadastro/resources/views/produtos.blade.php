@@ -123,7 +123,7 @@
 
         function editar(id)
         {
-            $.getJSON('/api/produtos/' + id, function(data) 
+            $.getJSON('/api/produtos/'+id, function(data) 
             {                
                 console.log(data);
                 $('#id').val(data.id);
@@ -214,11 +214,11 @@
                     });
 
                     if(e) {
-                        e[0].cells[0].textContent == novoProduto.id;
-                        e[0].cells[1].textContent == novoProduto.nome;
-                        e[0].cells[2].textContent == novoProduto.estoque;
-                        e[0].cells[3].textContent == novoProduto.preco;
-                        e[0].cells[4].textContent == novoProduto.categoria_id;
+                        e[0].cells[0].textContent = novoProduto.id;
+                        e[0].cells[1].textContent = novoProduto.nome;
+                        e[0].cells[2].textContent = novoProduto.estoque;
+                        e[0].cells[3].textContent = novoProduto.preco;
+                        e[0].cells[4].textContent = novoProduto.categoria_id;
                     }
                 },
                 error: function(error)
