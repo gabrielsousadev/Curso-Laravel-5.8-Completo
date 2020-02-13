@@ -86,7 +86,14 @@ Route::get('/inserir', function()
 
 Route::get('/clientes/json', function()
 {
-    $clientes = Cliente::all(); //Lazy Loading
-    //$clientes = Cliente::with(['endereco'])->get(); //Eager Loading
+    //$clientes = Cliente::all(); //Lazy Loading
+    $clientes = Cliente::with(['endereco'])->get(); //Eager Loading
     return $clientes->toJson();
+});
+
+Route::get('/enderecos/json', function()
+{
+    //$enderecos = Endereco::all(); //Lazy Loading
+    $enderecos = Endereco::with(['cliente'])->get(); //Eager Loading
+    return $enderecos->toJson();
 });
