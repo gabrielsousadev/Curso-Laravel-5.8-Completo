@@ -23,13 +23,12 @@ Route::get('/clientes', function ()
         echo "<p>Nome: ". $c->nome . "</p>";
         echo "<p>Telefone: ". $c->telefone . "</p>";  
         //$e = Endereco::where('cliente_id', $c->id)->first();  
-        echo "<p>Rua: ". $c->endereco->rua . "</p>";
-        echo "<p>Número: ". $c->endereco->numero . "</p>";    
-        echo "<p>Bairro: ". $c->endereco->bairro . "</p>";
-        echo "<p>Cidade: ". $c->endereco->cidade . "</p>";   
-        echo "<p>UF: ". $c->endereco->uf . "</p>";     
-        echo "<p>CEP: ". $c->endereco->cep . "</p>";
-
+        echo "<p>Rua: ". $c->rua . "</p>";
+        echo "<p>Número: ". $c->numero . "</p>";    
+        echo "<p>Bairro: ". $c->bairro . "</p>";
+        echo "<p>Cidade: ". $c->cidade . "</p>";   
+        echo "<p>UF: ". $c->uf . "</p>";     
+        echo "<p>CEP: ". $c->cep . "</p>";
         echo "<hr>";
     }
 });
@@ -50,4 +49,37 @@ Route::get('/enderecos', function ()
         echo "<p>CEP: ". $e->cep . "</p>";
         echo "<hr>";
     }
+});
+
+Route::get('/inserir', function()
+{
+    $novoCliente = new Cliente();
+    $novoCliente->nome = "Joao silva";
+    $novoCliente->telefone = "11 2222-3333";
+    $novoCliente->save();
+
+    $novoEndereco = new Endereco();
+    $novoEndereco->rua = "Av. Atlantica";
+    $novoEndereco->numero = 300;
+    $novoEndereco->bairro = "Paulista";
+    $novoEndereco->cidade = "Sao Paulo";
+    $novoEndereco->uf = "SP";
+    $novoEndereco->cep = "22222-555";
+
+    $novoCliente->endereco()->save($novoEndereco);
+
+    $novoCliente = new Cliente();
+    $novoCliente->nome = "Maria silva";
+    $novoCliente->telefone = "11 2222-4444";
+    $novoCliente->save();
+
+    $novoEndereco = new Endereco();
+    $novoEndereco->rua = "Av. Brasil";
+    $novoEndereco->numero = 1500;
+    $novoEndereco->bairro = "Rio Grande";
+    $novoEndereco->cidade = "Bahia";
+    $novoEndereco->uf = "BH";
+    $novoEndereco->cep = "22222-555";
+
+    $novoCliente->endereco()->save($novoEndereco);
 });
