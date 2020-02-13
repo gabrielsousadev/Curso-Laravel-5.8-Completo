@@ -83,3 +83,10 @@ Route::get('/inserir', function()
 
     $novoCliente->endereco()->save($novoEndereco);
 });
+
+Route::get('/clientes/json', function()
+{
+    $clientes = Cliente::all(); //Lazy Loading
+    //$clientes = Cliente::with(['endereco'])->get(); //Eager Loading
+    return $clientes->toJson();
+});
