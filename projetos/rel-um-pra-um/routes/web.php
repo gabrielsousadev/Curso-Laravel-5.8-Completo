@@ -40,6 +40,8 @@ Route::get('/enderecos', function ()
     foreach ($enderecos as $e)
     {
         echo "<p>ID_cliente: ". $e->cliente_id . "</p>";
+        echo "<p>Nome: ". $e->cliente->nome . "</p>";
+        echo "<p>Telefone: ". $e->cliente->telefone . "</p>";  
         echo "<p>Rua: ". $e->rua . "</p>";
         echo "<p>Número: ". $e->numero . "</p>";    
         echo "<p>Bairro: ". $e->bairro . "</p>";
