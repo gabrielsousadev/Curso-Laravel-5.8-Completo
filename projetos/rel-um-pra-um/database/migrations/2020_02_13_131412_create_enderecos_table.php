@@ -24,6 +24,7 @@ class CreateEnderecosTable extends Migration
             $table->string('uf');
             $table->string('cep');
             $table->timestamps();
+            //Add registros via Tinker
         });
     }
 
